@@ -158,6 +158,7 @@ box-shadow:inset 0 2px 0 var(--lg-hi),inset 0 0 50px rgba(255,255,255,.22),0 30p
 #lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:44px;height:44px;border-radius:50%;border:1px solid var(--lg-edge);background:var(--lg-a);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .master img{aspect-ratio:1/1;object-fit:cover;object-position:30% 22%;margin-bottom:14px}
 .lang{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:30}
+.bg{inset:0;will-change:auto;transform:none!important}body::after{animation:none!important}
 </style>
 </head>
 <body>
@@ -265,7 +266,7 @@ document.querySelectorAll('.float').forEach(function(el,i){el.style.transitionDe
 /* parallax background + nav highlight */
 var bg=document.getElementById('bg'),links=document.querySelectorAll('nav a');
 var secs=['top','history','legends','masters','play','library'].map(function(id){return document.getElementById(id)});
-var tick=false;addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){tick=false;sc()})},{passive:true});function sc(){var y=scrollY;bg.style.transform='translate3d(0,'+(-y*.07)+'px,0) scale('+(1+Math.min(y/9000,.08))+')';
+var tick=false;addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){tick=false;sc()})},{passive:true});function sc(){var y=scrollY;
  var cur=0;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<innerHeight*.45)cur=i});links.forEach(function(a,i){a.classList.toggle('act',i===cur)})}
 </script>
 <script>
